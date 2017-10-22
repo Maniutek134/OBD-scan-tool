@@ -79,8 +79,8 @@ int main(void) {
 	/* Init ILI9341 with LTDC on STM32F429 Discovery board */
 	//TM_ILI9341_Init();
 	
-	/* Initialize USART1 at 115200 baud, TX: PB6, RX: PB7 */
-	//TM_USART_Init(USART1, TM_USART_PinsPack_2, 115200);
+	/* Initialize UART5 at 9600 baud, TX: PC12, RX: PD2 */
+	//TM_USART_Init(USART1, TM_USART_PinsPack_2, 9600);
 	TM_USART_Init(UART5, TM_USART_PinsPack_1, 9600);
 	
 	/* 

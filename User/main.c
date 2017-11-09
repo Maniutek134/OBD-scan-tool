@@ -23,12 +23,13 @@
 #include "tm_stm32f4_disco.h"
 #include "tm_stm32f4_lcd.h"
 #include "tm_stm32f4_i2c.h"
-#include "tm_stm32f4_usart.h"
+//#include "tm_stm32f4_usart.h"
+
 #include "stdio.h"
 #include "tm_stm32f4_dma2d_graphic.h"
 #include "tm_stm32f4_emwin.h"
 #include "GUI.h"
-
+#include "bluetooth.h"
 #include "PROGBAR.h"
 #include "BUTTON.h"
 #include "GRAPH.h"
@@ -51,8 +52,9 @@ GRAPH_SCALE_Handle hScale;
 
 
 
-char buffer[100]="10";
-int bufferi[100];
+extern char bufferRx[100];
+extern char bufferTx[100];
+int buffer_int[100];
 int main(void) {
 	uint8_t i = 0;
 	uint32_t LastTime;
@@ -76,12 +78,14 @@ int main(void) {
 	/* Init DMA2D graphic acceleration */
 	TM_DMA2DGRAPHIC_Init();
 	
+	
+	Bluetooth_Init();
 	/* Init ILI9341 with LTDC on STM32F429 Discovery board */
 	//TM_ILI9341_Init();
 	
 	/* Initialize UART5 at 9600 baud, TX: PC12, RX: PD2 */
 	//TM_USART_Init(USART1, TM_USART_PinsPack_2, 9600);
-	TM_USART_Init(UART5, TM_USART_PinsPack_1, 9600);
+	//TM_USART_Init(UART5, TM_USART_PinsPack_1, 9600);
 	
 	/* 
 	   Enable memory for EMWIN 
@@ -123,20 +127,19 @@ int main(void) {
 	
 	/* Change layers for LTDC, show layer 2 on LCD */
 	GUI_SetBkColor(GUI_RED);
-	TM_USART_Puts(UART5, "123");
+	//TM_USART_Puts(UART5, "123");
 
 	
 	while (1) {
 	//TM_USART_Puts(USART1, "1");
 	//Delay(1000);
-				/* Get string from internal buffer */
-		if (TM_USART_Gets(UART5, buffer, sizeof(buffer))) {
-			/* Return string back */
-			int a=atoi(buffer);
-			TM_USART_Puts(UART5, buffer);
-			/* Add new fake values to graph */
-			GRAPH_DATA_YT_AddValue(hData, a);
-			
+		if(BluetoothGet()){
+			int size=sizeof(bufferRx);
+			char str[12];
+			sprintf(str,"%d",size);
+			BluetoothSend(str);
+		}
+		
 			if (TM_EMWIN_Exec()) {
 			/* Toggle RED led if non-zero value is returned from GUI_Exec() */
 			TM_DISCO_LedToggle(LED_RED);
@@ -150,7 +153,7 @@ int main(void) {
 					
 	
 	}
-}
+
 	
 	
 

@@ -49,7 +49,6 @@
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_dma2d_graphic.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_i2c.h
-.\targets\stm32f429_discovery\main.o: .\TM\tm_stm32f4_usart.h
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_emwin.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_ili9341_ltdc.h
@@ -62,6 +61,9 @@
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\LCD.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\Global.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\GUI_Version.h
+.\targets\stm32f429_discovery\main.o: User\bluetooth.h
+.\targets\stm32f429_discovery\main.o: .\TM\tm_stm32f4_usart.h
+.\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\PROGBAR.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\WM.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\WM_GUI.h

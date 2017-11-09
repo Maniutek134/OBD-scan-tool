@@ -935,6 +935,26 @@
               <FileType>1</FileType>
               <FilePath>.\User\system_stm32f4xx.c</FilePath>
             </File>
+            <File>
+              <FileName>bluetooth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\bluetooth.c</FilePath>
+            </File>
+            <File>
+              <FileName>bluetooth.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\bluetooth.h</FilePath>
+            </File>
+            <File>
+              <FileName>parser.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\parser.c</FilePath>
+            </File>
+            <File>
+              <FileName>parser.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\parser.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -8,4 +8,4 @@
 
 void Bluetooth_Init();
 void BluetoothSend(char *buffer);
-bool BluetoothGet();
+bool BluetoothGet(char *buffer);

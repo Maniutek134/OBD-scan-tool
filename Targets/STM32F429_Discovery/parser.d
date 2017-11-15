@@ -45,3 +45,5 @@
 .\targets\stm32f429_discovery\parser.o: .\User\defines.h
 .\targets\stm32f429_discovery\parser.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_gpio.h
 .\targets\stm32f429_discovery\parser.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+.\targets\stm32f429_discovery\parser.o: User\command.h
+.\targets\stm32f429_discovery\parser.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\string.h

@@ -14,8 +14,8 @@ void BluetoothSend(char *buffer){
 	TM_USART_Puts(USART, buffer);
 }
 
-bool BluetoothGet(){
-	if(TM_USART_Gets(USART, bufferRx, sizeof(bufferRx))){
+bool BluetoothGet(char* buffer){
+	if(TM_USART_Gets(USART, buffer, sizeof(bufferRx))){
 		return true;
 	}
 	else{

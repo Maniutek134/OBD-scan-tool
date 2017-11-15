@@ -946,14 +946,24 @@
               <FilePath>.\User\bluetooth.h</FilePath>
             </File>
             <File>
-              <FileName>parser.c</FileName>
+              <FileName>command.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\User\parser.c</FilePath>
+              <FilePath>.\User\command.c</FilePath>
             </File>
             <File>
-              <FileName>parser.h</FileName>
+              <FileName>command.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\User\parser.h</FilePath>
+              <FilePath>.\User\command.h</FilePath>
+            </File>
+            <File>
+              <FileName>calculator.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\calculator.c</FilePath>
+            </File>
+            <File>
+              <FileName>calculator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\calculator.h</FilePath>
             </File>
           </Files>
         </Group>

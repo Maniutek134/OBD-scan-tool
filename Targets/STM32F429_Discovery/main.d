@@ -49,6 +49,8 @@
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_dma2d_graphic.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_i2c.h
+.\targets\stm32f429_discovery\main.o: User\calculator.h
+.\targets\stm32f429_discovery\main.o: User\command.h
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_emwin.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_ili9341_ltdc.h

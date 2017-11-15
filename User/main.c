@@ -24,6 +24,8 @@
 #include "tm_stm32f4_lcd.h"
 #include "tm_stm32f4_i2c.h"
 //#include "tm_stm32f4_usart.h"
+//#include "command.h"
+#include "calculator.h"
 
 #include "stdio.h"
 #include "tm_stm32f4_dma2d_graphic.h"
@@ -42,6 +44,7 @@ GRAPH_DATA_Handle hData;
 GRAPH_DATA_Handle hData2;
 GRAPH_DATA_Handle hData3;
 GRAPH_SCALE_Handle hScale;
+BUTTON_Handle hButton;
 
 #define ILI9341_PIXEL				76800
 /* Starting buffer address in RAM */
@@ -54,12 +57,14 @@ GRAPH_SCALE_Handle hScale;
 
 extern char bufferRx[100];
 extern char bufferTx[100];
+extern char* data;
 int buffer_int[100];
 int main(void) {
 	uint8_t i = 0;
 	uint32_t LastTime;
-
 	
+
+
 	/* Initialize system */
 	SystemInit();
 	
@@ -95,56 +100,69 @@ int main(void) {
 	   You have to use @ref TM_EMWIN_Exec() to execute all EMWIN pending tasks in future or memory does not have effect here
 	*/
 	
+	/* Create button with GUI_ID_OK ID number */
+  hButton = BUTTON_CreateEx(10, 50, 219, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON0);
+	BUTTON_SetText(hButton, "Click me to continue..");
+	BUTTON_SetFont(hButton, &GUI_Font8x15B_ASCII);
+	GUI_Exec();
+	
 	TM_EMWIN_MemoryEnable();
 	
-	/* Create graph through all LCD screen */
-	hGraph = GRAPH_CreateEx(0, 0, 320, 240, 0, WM_CF_SHOW, 0, GUI_ID_GRAPH0);
 	
-	/* Set grids and border */
-	GRAPH_SetGridVis(hGraph, 1);
-  GRAPH_SetBorder(hGraph, 25, 5, 5, 5);
-	GRAPH_SetColor(hGraph, 0x00202020, GRAPH_CI_GRID);
-	GRAPH_SetVSizeX(hGraph, 100);
-	GRAPH_SetVSizeY(hGraph, 100);
 	
-	/* Create a curve for graph */
-	hData = GRAPH_DATA_YT_Create(GUI_DARKRED, 300, 0, 0); 
-	hData2 = GRAPH_DATA_YT_Create(GUI_DARKGREEN, 200, 0, 0); 
-	hData3 = GRAPH_DATA_YT_Create(GUI_YELLOW, 200, 0, 0); 
-	
-	/* Attach curve to graph */
-    GRAPH_AttachData(hGraph, hData);
-    GRAPH_AttachData(hGraph, hData2);
-    GRAPH_AttachData(hGraph, hData3);
-	
-	/* Create scale for graph */
-	hScale = GRAPH_SCALE_Create(3, GUI_TA_LEFT, GRAPH_SCALE_CF_VERTICAL, 25);
-	GRAPH_SCALE_SetTextColor(hScale, GUI_BLUE);
-	/* Attach it to graph */
-	GRAPH_AttachScale(hGraph, hScale);
 	
 
 	
-	/* Change layers for LTDC, show layer 2 on LCD */
-	GUI_SetBkColor(GUI_RED);
-	//TM_USART_Puts(UART5, "123");
+	Command speedCommand = {.id=13,
+													.name = "speed",
+													.request = "010D\r\n",
+													.answer = ""};
+	Command rpmCommand = {.id=12,
+												.name = "RPM",
+												.request = "010C\r\n",
+												.answer = ""};
+	
 
 	
 	while (1) {
 	//TM_USART_Puts(USART1, "1");
 	//Delay(1000);
-		if(BluetoothGet()){
-			int size=sizeof(bufferRx);
-			char str[12];
-			sprintf(str,"%d",size);
-			BluetoothSend(str);
+		/* Check if button was pressed */
+    if (GUI_GetKey() == GUI_ID_BUTTON0) {
+			
+      BluetoothSend(rpmCommand.request);
+			
+			while(1){
+				if(BluetoothGet(bufferRx)){
+					rpmCommand.answer=bufferRx;
+					int value=calculateValue(rpmCommand);
+					char str[10];
+					char str2[2]="\r\n";
+					sprintf(str,"%d",value);
+					strcat(str,str2);
+					BluetoothSend(str);
+					GUI_DispStringAt(str, 2, 3);
+					GUI_Exec();
+				break;
+			}
 		}
+		
+		
+	}
+	
+	
+	
+                    
+		
+				
 		
 			if (TM_EMWIN_Exec()) {
 			/* Toggle RED led if non-zero value is returned from GUI_Exec() */
 			TM_DISCO_LedToggle(LED_RED);
 			}
-		}
+	}
+	
+}
 		
 		
 		
@@ -152,7 +170,7 @@ int main(void) {
 		
 					
 	
-	}
+	
 
 	
 	

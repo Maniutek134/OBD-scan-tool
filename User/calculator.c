@@ -1,9 +1,23 @@
 #include "calculator.h"
 
+char dataBuffer[17];
 char *data;
 
+
 void extractData(Command command){
-		data=command.answer+6;
+		int strLength1 =17;
+		int strLength2=14;
+	
+		if(command.responseType==1){
+			strncpy( dataBuffer , command.response ,strLength1);
+			dataBuffer[16]='\0';
+		}
+		else if(command.responseType==0){
+			strncpy( dataBuffer , command.response ,strLength2);
+			dataBuffer[13]='\0';
+		}
+		data=dataBuffer+11;
+		
 }
 
 int calculateValue(Command command){

@@ -33,15 +33,15 @@ User\bluetooth.h(9): warning:  #1295-D: Deprecated declaration Bluetooth_Init - 
   void Bluetooth_Init();
 User\bluetooth.h(11): warning:  #1-D: last line of file ends without a newline
   bool BluetoothGet(char *buffer);
-User\main.c(63): warning:  #177-D: variable "i"  was declared but never referenced
+User\main.c(64): warning:  #177-D: variable "i"  was declared but never referenced
   	uint8_t i = 0;
-User\main.c(64): warning:  #177-D: variable "LastTime"  was declared but never referenced
+User\main.c(65): warning:  #177-D: variable "LastTime"  was declared but never referenced
   	uint32_t LastTime;
-User\main.c(116): warning:  #177-D: variable "speedCommand"  was declared but never referenced
-  	Command speedCommand = {.id=13,
+User\main.c(125): warning:  #177-D: variable "rpmCommand"  was declared but never referenced
+  	Command rpmCommand = {.id=12,
 User\main.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=75908 RO-data=10872 RW-data=856 ZI-data=4732792  
+Program Size: Code=76000 RO-data=10880 RW-data=860 ZI-data=4732812  
 FromELF: creating hex file...
 ".\Targets\STM32F429_Discovery\project.axf" - 0 Error(s), 5 Warning(s).
 

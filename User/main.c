@@ -44,7 +44,7 @@ GRAPH_DATA_Handle hData;
 GRAPH_DATA_Handle hData2;
 GRAPH_DATA_Handle hData3;
 GRAPH_SCALE_Handle hScale;
-BUTTON_Handle hButton;
+BUTTON_Handle hButton,gButton;
 
 #define ILI9341_PIXEL				76800
 /* Starting buffer address in RAM */
@@ -58,6 +58,7 @@ BUTTON_Handle hButton;
 extern char bufferRx[100];
 extern char bufferTx[100];
 extern char* data;
+
 int buffer_int[100];
 int main(void) {
 	uint8_t i = 0;
@@ -102,8 +103,11 @@ int main(void) {
 	
 	/* Create button with GUI_ID_OK ID number */
   hButton = BUTTON_CreateEx(10, 50, 219, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON0);
-	BUTTON_SetText(hButton, "Click me to continue..");
+	gButton= BUTTON_CreateEx(10, 120, 219, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON1);
+	BUTTON_SetText(hButton, "RPM");
+	BUTTON_SetText(gButton, "Speed");
 	BUTTON_SetFont(hButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(gButton, &GUI_Font8x15B_ASCII);
 	GUI_Exec();
 	
 	TM_EMWIN_MemoryEnable();
@@ -116,11 +120,13 @@ int main(void) {
 	Command speedCommand = {.id=13,
 													.name = "speed",
 													.request = "010D\r\n",
-													.answer = ""};
+													.response = "",
+													.responseType=0	};
 	Command rpmCommand = {.id=12,
 												.name = "RPM",
 												.request = "010C\r\n",
-												.answer = ""};
+												.response = "",
+												.responseType=1};
 	
 
 	
@@ -128,34 +134,24 @@ int main(void) {
 	//TM_USART_Puts(USART1, "1");
 	//Delay(1000);
 		/* Check if button was pressed */
-    if (GUI_GetKey() == GUI_ID_BUTTON0) {
-			
-      BluetoothSend(rpmCommand.request);
-			
-			while(1){
-				if(BluetoothGet(bufferRx)){
-					rpmCommand.answer=bufferRx;
-					int value=calculateValue(rpmCommand);
-					char str[10];
-					char str2[2]="\r\n";
-					sprintf(str,"%d",value);
-					strcat(str,str2);
-					BluetoothSend(str);
-					GUI_DispStringAt(str, 2, 3);
-					GUI_Exec();
-				break;
-			}
-		}
 		
-		
-	}
-	
-	
-	
-                    
-		
+			if (GUI_GetKey() == GUI_ID_BUTTON1) {
+				BluetoothSend(speedCommand.request);
+				GUI_Clear();
+				while(1){
+					if(BluetoothGet(bufferRx)){
+						speedCommand.response=bufferRx;
+						int value = calculateValue(speedCommand);
+						char str[12];
+						sprintf(str,"%d", value);
+						//extractData(speedCommand);
+						GUI_DispStringAt(str,3,4);
+						break;
+					}
 				
-		
+				}			
+			}
+			
 			if (TM_EMWIN_Exec()) {
 			/* Toggle RED led if non-zero value is returned from GUI_Exec() */
 			TM_DISCO_LedToggle(LED_RED);
@@ -166,16 +162,7 @@ int main(void) {
 		
 		
 		
-		
-		
-					
 	
-	
-
-	
-	
-
-
 
 void TM_DELAY_1msHandler(void) {
 	/* Update touch for EMWIN */

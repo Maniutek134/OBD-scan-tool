@@ -41,21 +41,18 @@
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_delay.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\attributes.h
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
-.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_disco.h
-.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_gpio.h
-.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_lcd.h
-.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_sdram.h
-.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_fonts.h
-.\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\string.h
-.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_dma2d_graphic.h
-.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_i2c.h
-.\targets\stm32f429_discovery\main.o: User\calculator.h
-.\targets\stm32f429_discovery\main.o: User\command.h
+.\targets\stm32f429_discovery\main.o: User\graphic.h
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_dma2d_graphic.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_emwin.h
+.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_sdram.h
+.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_gpio.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_ili9341_ltdc.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_spi.h
+.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_fonts.h
+.\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_stmpe811.h
+.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_i2c.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\GUI.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\GUI_ConfDefaults.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\GUIConf.h
@@ -104,3 +101,7 @@
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\TEXT.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\emwin\TREEVIEW.h
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\targets\stm32f429_discovery\main.o: User\calculator.h
+.\targets\stm32f429_discovery\main.o: User\command.h
+.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_lcd.h
+.\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_disco.h

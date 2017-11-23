@@ -20,31 +20,10 @@
 /* Include my libraries here */
 #include "defines.h"
 #include "tm_stm32f4_delay.h"
-#include "tm_stm32f4_disco.h"
-#include "tm_stm32f4_lcd.h"
-#include "tm_stm32f4_i2c.h"
-//#include "tm_stm32f4_usart.h"
-//#include "command.h"
-#include "calculator.h"
+#include "graphic.h"
 
-#include "stdio.h"
-#include "tm_stm32f4_dma2d_graphic.h"
-#include "tm_stm32f4_emwin.h"
-#include "GUI.h"
-#include "bluetooth.h"
-#include "PROGBAR.h"
-#include "BUTTON.h"
-#include "GRAPH.h"
-#include "DIALOG.h"
-#include "math.h"
-
-/* Graph handle */
-GRAPH_Handle hGraph;
-GRAPH_DATA_Handle hData;
-GRAPH_DATA_Handle hData2;
-GRAPH_DATA_Handle hData3;
-GRAPH_SCALE_Handle hScale;
-BUTTON_Handle hButton,gButton;
+/*Button handles*/
+BUTTON_Handle rpmButton,speedButton,inAirTempButton, fuelPressureButton;
 
 #define ILI9341_PIXEL				76800
 /* Starting buffer address in RAM */
@@ -55,9 +34,9 @@ BUTTON_Handle hButton,gButton;
 
 
 
-extern char bufferRx[100];
+/*extern char bufferRx[100];
 extern char bufferTx[100];
-extern char* data;
+extern char* data;*/
 
 int buffer_int[100];
 int main(void) {
@@ -86,12 +65,7 @@ int main(void) {
 	
 	
 	Bluetooth_Init();
-	/* Init ILI9341 with LTDC on STM32F429 Discovery board */
-	//TM_ILI9341_Init();
 	
-	/* Initialize UART5 at 9600 baud, TX: PC12, RX: PD2 */
-	//TM_USART_Init(USART1, TM_USART_PinsPack_2, 9600);
-	//TM_USART_Init(UART5, TM_USART_PinsPack_1, 9600);
 	
 	/* 
 	   Enable memory for EMWIN 
@@ -102,15 +76,29 @@ int main(void) {
 	*/
 	
 	/* Create button with GUI_ID_OK ID number */
-  hButton = BUTTON_CreateEx(10, 50, 219, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON0);
-	gButton= BUTTON_CreateEx(10, 120, 219, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON1);
-	BUTTON_SetText(hButton, "RPM");
-	BUTTON_SetText(gButton, "Speed");
-	BUTTON_SetFont(hButton, &GUI_Font8x15B_ASCII);
-	BUTTON_SetFont(gButton, &GUI_Font8x15B_ASCII);
+  rpmButton = BUTTON_CreateEx(10, 30, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON1);
+	speedButton= BUTTON_CreateEx(10, 60, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON2);
+	inAirTempButton = BUTTON_CreateEx(10, 90, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON3);
+	fuelPressureButton=BUTTON_CreateEx(10, 120, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON4);
+	
+	BUTTON_SetText(rpmButton, "RPM");
+	BUTTON_SetText(speedButton, "Speed");
+	BUTTON_SetText(inAirTempButton, "Intake Temperature");
+	BUTTON_SetText(fuelPressureButton, "Fuel Pressure");
+	BUTTON_SetFont(rpmButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(speedButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(inAirTempButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(fuelPressureButton, &GUI_Font8x15B_ASCII);
+	
+	/*welcome singh8*/
+	GUI_DispStringAt("What parameter do you want to see?",70,3);
+	
+	
 	GUI_Exec();
 	
 	TM_EMWIN_MemoryEnable();
+	
+	
 	
 	
 	
@@ -121,35 +109,50 @@ int main(void) {
 													.name = "speed",
 													.request = "010D\r\n",
 													.response = "",
-													.responseType=0	};
+													.responseType=0,
+													.units = " km/h"};
 	Command rpmCommand = {.id=12,
 												.name = "RPM",
 												.request = "010C\r\n",
 												.response = "",
-												.responseType=1};
+												.responseType=1,
+												.units = " rpm"};
+	
+	Command inAirTempCommand = {.id=15,
+													.name = "AirTemp",
+													.request = "010F\r\n",
+													.response = "",
+													.responseType=0,
+													.units = " C"};
+	
+	Command fuelPressureCommand= {.id=10,
+															.name = "FuelPressure",
+															.request = "0109\r\n",
+															.response = "",
+															.responseType=0,
+															.units = " kPa"};
+	
+	
 	
 
-	
+	/*main loop*/
 	while (1) {
-	//TM_USART_Puts(USART1, "1");
-	//Delay(1000);
+	
 		/* Check if button was pressed */
-		
-			if (GUI_GetKey() == GUI_ID_BUTTON1) {
-				BluetoothSend(speedCommand.request);
-				GUI_Clear();
-				while(1){
-					if(BluetoothGet(bufferRx)){
-						speedCommand.response=bufferRx;
-						int value = calculateValue(speedCommand);
-						char str[12];
-						sprintf(str,"%d", value);
-						//extractData(speedCommand);
-						GUI_DispStringAt(str,3,4);
-						break;
-					}
-				
-				}			
+			switch(GUI_GetKey()){
+				case GUI_ID_BUTTON1:
+					//BluetoothSend(speedCommand.request);
+					graphicInit(rpmCommand);	
+					break;
+				case GUI_ID_BUTTON2:
+					graphicInit(speedCommand);
+					break;
+				case GUI_ID_BUTTON3:
+					graphicInit(inAirTempCommand);
+					break;
+				case GUI_ID_BUTTON4:
+					graphicInit(fuelPressureCommand);
+					break;
 			}
 			
 			if (TM_EMWIN_Exec()) {

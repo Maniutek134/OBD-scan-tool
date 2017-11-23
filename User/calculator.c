@@ -25,21 +25,32 @@ int calculateValue(Command command){
 	int value;
 	int a,b,c,d;
 	char *A,*B,*C,*D;
+	A=data;
 	
 	switch(command.id){
 		case 13:
-			A=data;
 			sscanf(A, "%x", &value);
 			return value;
 			break;
+		
 		case 12:
-			A=data;
 			B=data+2;
 			sscanf(A, "%x", &a);
 			sscanf(B, "%x", &b);
 			value=(256*a+b)/4;
 			return value;
 			break;
+		
+		case 15:
+			sscanf(A, "%x", &a);
+			value = a-40;
+			return value;
+			break;
+		
+		case 10:
+			sscanf(A, "%x", &a);
+			value=3*a;
+			return value;
 	}
 	
 			

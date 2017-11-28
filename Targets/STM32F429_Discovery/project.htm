@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Targets\STM32F429_Discovery\project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Targets\STM32F429_Discovery\project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Nov 23 20:52:12 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Nov 28 23:45:00 2017
 <BR><P>
-<H3>Maximum Stack Usage =        864 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        912 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; graphicInit &rArr; GUI_Delay &rArr; GUI_Exec &rArr; GUI_Exec1 &rArr; WM_Exec &rArr; _DrawNext &rArr; WM__Paint &rArr; GUI_MEMDEV_Draw &rArr; GUI_MEMDEV_CopyToLCD &rArr; GUI_MEMDEV_CopyToLCDAt &rArr; GUI_MEMDEV__WriteToActiveOpaque &rArr; _WriteToActiveOpaque_8 &rArr; LCD__DrawBitmap_1bpp &rArr; LCD_FillRect
 <P>
@@ -15,7 +15,7 @@ Mutually Recursive functions
  <LI><a href="#[3d9]">WM__InvalidateRect</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[3d9]">WM__InvalidateRect</a><BR>
  <LI><a href="#[3be]">WM_InvalidateWindowAndDescsEx</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[3be]">WM_InvalidateWindowAndDescsEx</a><BR>
  <LI><a href="#[3b9]">WM__InvalidateDrawAndDescs</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[3b9]">WM__InvalidateDrawAndDescs</a><BR>
- <LI><a href="#[273]">WM_DefaultProc</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[394]">WM_SendToParent</a><BR>
+ <LI><a href="#[394]">WM_SendToParent</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[3c2]">WM__SendMessage</a><BR>
  <LI><a href="#[399]">_DeleteAllChildren</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[253]">WM_DeleteWindow</a><BR>
  <LI><a href="#[3e6]">_PopFreeBlock</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[41d]">_EnlargeBlocks</a><BR>
  <LI><a href="#[2aa]">_Alloc</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[2af]">_InitOnce</a><BR>
@@ -1310,7 +1310,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[172]"></a>TM_EMWIN_Init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, tm_stm32f4_emwin.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = TM_EMWIN_Init &rArr; GUI_Init &rArr; WM_Init &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = TM_EMWIN_Init &rArr; GUI_Init &rArr; WM_Init &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[176]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_STMPE811_Init
@@ -2301,7 +2301,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[224]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_USART_INT_GetUsart
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BluetoothSend
-<LI><a href="#[23b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;graphicInit
 </UL>
 
 <P><STRONG><a name="[231]"></a>TM_USART_Send</STRONG> (Thumb, 48 bytes, Stack size 16 bytes, tm_stm32f4_usart.o(.text), UNUSED)
@@ -2359,8 +2358,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f429_439xx.o(RESET)
 </UL>
-<P><STRONG><a name="[6b]"></a>main</STRONG> (Thumb, 378 bytes, Stack size 112 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 864<LI>Call Chain = main &rArr; graphicInit &rArr; GUI_Delay &rArr; GUI_Exec &rArr; GUI_Exec1 &rArr; WM_Exec &rArr; _DrawNext &rArr; WM__Paint &rArr; GUI_MEMDEV_Draw &rArr; GUI_MEMDEV_CopyToLCD &rArr; GUI_MEMDEV_CopyToLCDAt &rArr; GUI_MEMDEV__WriteToActiveOpaque &rArr; _WriteToActiveOpaque_8 &rArr; LCD__DrawBitmap_1bpp &rArr; LCD_FillRect
+<P><STRONG><a name="[6b]"></a>main</STRONG> (Thumb, 762 bytes, Stack size 160 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 912<LI>Call Chain = main &rArr; graphicInit &rArr; GUI_Delay &rArr; GUI_Exec &rArr; GUI_Exec1 &rArr; WM_Exec &rArr; _DrawNext &rArr; WM__Paint &rArr; GUI_MEMDEV_Draw &rArr; GUI_MEMDEV_CopyToLCD &rArr; GUI_MEMDEV_CopyToLCDAt &rArr; GUI_MEMDEV__WriteToActiveOpaque &rArr; _WriteToActiveOpaque_8 &rArr; LCD__DrawBitmap_1bpp &rArr; LCD_FillRect
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Exec
@@ -2480,7 +2479,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[241]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;calculateValue
 </UL>
 
-<P><STRONG><a name="[241]"></a>calculateValue</STRONG> (Thumb, 124 bytes, Stack size 32 bytes, calculator.o(.text))
+<P><STRONG><a name="[241]"></a>calculateValue</STRONG> (Thumb, 130 bytes, Stack size 32 bytes, calculator.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = calculateValue &rArr; __0sscanf &rArr; __vfscanf_char &rArr; __vfscanf &rArr; _scanf_int
 </UL>
 <BR>[Calls]<UL><LI><a href="#[23f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;extractData
@@ -2497,7 +2496,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[23b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;graphicInit
 </UL>
 
-<P><STRONG><a name="[23b]"></a>graphicInit</STRONG> (Thumb, 494 bytes, Stack size 72 bytes, graphic.o(.text))
+<P><STRONG><a name="[23b]"></a>graphicInit</STRONG> (Thumb, 498 bytes, Stack size 72 bytes, graphic.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 752<LI>Call Chain = graphicInit &rArr; GUI_Delay &rArr; GUI_Exec &rArr; GUI_Exec1 &rArr; WM_Exec &rArr; _DrawNext &rArr; WM__Paint &rArr; GUI_MEMDEV_Draw &rArr; GUI_MEMDEV_CopyToLCD &rArr; GUI_MEMDEV_CopyToLCDAt &rArr; GUI_MEMDEV__WriteToActiveOpaque &rArr; _WriteToActiveOpaque_8 &rArr; LCD__DrawBitmap_1bpp &rArr; LCD_FillRect
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Exec
@@ -2529,7 +2528,6 @@ Global Symbols
 <LI><a href="#[236]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetText
 <LI><a href="#[237]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_SetFont
 <LI><a href="#[235]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_CreateEx
-<LI><a href="#[230]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_USART_Puts
 <LI><a href="#[255]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcat
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -2791,7 +2789,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> button.o(i.BUTTON_CreateUser)
 </UL>
 <P><STRONG><a name="[235]"></a>BUTTON_CreateEx</STRONG> (Thumb, 28 bytes, Stack size 40 bytes, button.o(i.BUTTON_CreateEx))
-<BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = BUTTON_CreateEx &rArr; BUTTON_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 336<LI>Call Chain = BUTTON_CreateEx &rArr; BUTTON_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[274]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_CreateUser
 </UL>
@@ -2800,7 +2798,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[274]"></a>BUTTON_CreateUser</STRONG> (Thumb, 94 bytes, Stack size 40 bytes, button.o(i.BUTTON_CreateUser))
-<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = BUTTON_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = BUTTON_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -2936,7 +2934,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[86]"></a>GRAPH_Callback</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, graph.o(i.GRAPH_Callback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 512<LI>Call Chain = GRAPH_Callback &rArr; _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 512<LI>Call Chain = GRAPH_Callback &rArr; _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DefaultProc
 <LI><a href="#[26b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_HandleActive
@@ -2950,7 +2948,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> graph.o(i.GRAPH_CreateUser)
 </UL>
 <P><STRONG><a name="[245]"></a>GRAPH_CreateEx</STRONG> (Thumb, 28 bytes, Stack size 40 bytes, graph.o(i.GRAPH_CreateEx))
-<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = GRAPH_CreateEx &rArr; GRAPH_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = GRAPH_CreateEx &rArr; GRAPH_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[298]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GRAPH_CreateUser
 </UL>
@@ -2958,7 +2956,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[298]"></a>GRAPH_CreateUser</STRONG> (Thumb, 102 bytes, Stack size 48 bytes, graph.o(i.GRAPH_CreateUser))
-<BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = GRAPH_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 304<LI>Call Chain = GRAPH_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -3032,7 +3030,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[247]"></a>GRAPH_SetBorder</STRONG> (Thumb, 56 bytes, Stack size 32 bytes, graph.o(i.GRAPH_SetBorder))
-<BR><BR>[Stack]<UL><LI>Max Depth = 520<LI>Call Chain = GRAPH_SetBorder &rArr; _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 520<LI>Call Chain = GRAPH_SetBorder &rArr; _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -3063,7 +3061,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[249]"></a>GRAPH_SetVSizeX</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, graph.o(i.GRAPH_SetVSizeX))
-<BR><BR>[Stack]<UL><LI>Max Depth = 512<LI>Call Chain = GRAPH_SetVSizeX &rArr; _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 512<LI>Call Chain = GRAPH_SetVSizeX &rArr; _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -3074,7 +3072,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[24a]"></a>GRAPH_SetVSizeY</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, graph.o(i.GRAPH_SetVSizeY))
-<BR><BR>[Stack]<UL><LI>Max Depth = 512<LI>Call Chain = GRAPH_SetVSizeY &rArr; _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 512<LI>Call Chain = GRAPH_SetVSizeY &rArr; _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -4177,7 +4175,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[177]"></a>GUI_Init</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, gui_core.o(i.GUI_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = GUI_Init &rArr; WM_Init &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = GUI_Init &rArr; WM_Init &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_X_Init
 <LI><a href="#[2fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;emWin_LCD_Init
@@ -4464,7 +4462,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[326]"></a>GUI_PollKeyMsg</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, gui_onkey.o(i.GUI_PollKeyMsg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = GUI_PollKeyMsg &rArr; WM_OnKey &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = GUI_PollKeyMsg &rArr; WM_OnKey &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[328]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_OnKey
 <LI><a href="#[327]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_IncReadPointer
@@ -5525,7 +5523,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[36b]"></a>SCROLLBAR_AddValue</STRONG> (Thumb, 32 bytes, Stack size 24 bytes, scrollbar.o(i.SCROLLBAR_AddValue))
-<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = SCROLLBAR_AddValue &rArr; SCROLLBAR_SetValue &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = SCROLLBAR_AddValue &rArr; SCROLLBAR_SetValue &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -5542,10 +5540,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[277]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_InvalidateWindow
 <LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DefaultProc
 <LI><a href="#[26b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_HandleActive
+<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[36d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR__InvalidatePartner
 <LI><a href="#[36f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_Inc
 <LI><a href="#[370]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_Dec
@@ -5556,7 +5554,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> scrollbar.o(i.SCROLLBAR_CreateUser)
 </UL>
 <P><STRONG><a name="[373]"></a>SCROLLBAR_CreateAttached</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, scrollbar_create.o(i.SCROLLBAR_CreateAttached))
-<BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 384<LI>Call Chain = SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[374]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_CreateEx
@@ -5565,7 +5563,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[374]"></a>SCROLLBAR_CreateEx</STRONG> (Thumb, 28 bytes, Stack size 40 bytes, scrollbar.o(i.SCROLLBAR_CreateEx))
-<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 360<LI>Call Chain = SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[375]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_CreateUser
 </UL>
@@ -5573,7 +5571,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[375]"></a>SCROLLBAR_CreateUser</STRONG> (Thumb, 212 bytes, Stack size 64 bytes, scrollbar.o(i.SCROLLBAR_CreateUser))
-<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 320<LI>Call Chain = SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -5586,7 +5584,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[370]"></a>SCROLLBAR_Dec</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, scrollbar.o(i.SCROLLBAR_Dec))
-<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = SCROLLBAR_Dec &rArr; SCROLLBAR_AddValue &rArr; SCROLLBAR_SetValue &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = SCROLLBAR_Dec &rArr; SCROLLBAR_AddValue &rArr; SCROLLBAR_SetValue &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[36b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_AddValue
 </UL>
@@ -5603,7 +5601,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[36f]"></a>SCROLLBAR_Inc</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, scrollbar.o(i.SCROLLBAR_Inc))
-<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = SCROLLBAR_Inc &rArr; SCROLLBAR_AddValue &rArr; SCROLLBAR_SetValue &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = SCROLLBAR_Inc &rArr; SCROLLBAR_AddValue &rArr; SCROLLBAR_SetValue &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[36b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_AddValue
 </UL>
@@ -5611,12 +5609,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[36c]"></a>SCROLLBAR_SetValue</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, scrollbar.o(i.SCROLLBAR_SetValue))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = SCROLLBAR_SetValue &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = SCROLLBAR_SetValue &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[277]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_InvalidateWindow
+<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_AddValue
 <LI><a href="#[36e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouch
@@ -5665,9 +5663,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[277]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_InvalidateWindow
 <LI><a href="#[37e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_SetState
+<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[37b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__UpdateChildPositions
 <LI><a href="#[37c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetFocus
 <LI><a href="#[37d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_BringToTop
@@ -5830,7 +5828,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[275]"></a>WM_CreateWindowAsChild</STRONG> (Thumb, 316 bytes, Stack size 48 bytes, wm.o(i.WM_CreateWindowAsChild))
-<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_h2p
 <LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
@@ -5855,8 +5853,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[273]"></a>WM_DefaultProc</STRONG> (Thumb, 70 bytes, Stack size 8 bytes, wm.o(i.WM_DefaultProc))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168 + In Cycle
-<LI>Call Chain = WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[277]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_InvalidateWindow
 <LI><a href="#[393]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__GetClientRectEx
@@ -5882,12 +5879,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[253]"></a>WM_DeleteWindow</STRONG> (Thumb, 192 bytes, Stack size 24 bytes, wm.o(i.WM_DeleteWindow))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = WM_DeleteWindow &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = WM_DeleteWindow &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
 <LI><a href="#[2ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_Free
-<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[398]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__DeleteAssocTimer
 <LI><a href="#[307]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MEMDEV_Delete
 <LI><a href="#[392]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMsgNoData
@@ -5897,6 +5893,7 @@ Global Symbols
 <LI><a href="#[39a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__DetachWindow
 <LI><a href="#[391]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SelectWindow
 <LI><a href="#[399]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DeleteAllChildren
+<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;graphicInit
 <LI><a href="#[39c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Exec1Input
@@ -5980,7 +5977,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3a4]"></a>WM_GetId</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, wm_getid.o(i.WM_GetId))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = WM_GetId &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = WM_GetId &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SendMessage
 </UL>
@@ -5991,7 +5988,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[376]"></a>WM_GetInsideRectEx</STRONG> (Thumb, 16 bytes, Stack size 24 bytes, wm_getinsiderect.o(i.WM_GetInsideRectEx))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = WM_GetInsideRectEx &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = WM_GetInsideRectEx &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SendMessage
 </UL>
@@ -6137,7 +6134,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[2fd]"></a>WM_Init</STRONG> (Thumb, 184 bytes, Stack size 56 bytes, wm.o(i.WM_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = WM_Init &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 312<LI>Call Chain = WM_Init &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[338]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__RegisterExit
 <LI><a href="#[277]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_InvalidateWindow
@@ -6234,7 +6231,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[371]"></a>WM_NotifyParent</STRONG> (Thumb, 16 bytes, Stack size 24 bytes, wm_notifyparent.o(i.WM_NotifyParent))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = WM_NotifyParent &rArr; WM_SendToParent &rArr;  WM__SendMessage (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[394]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SendToParent
 </UL>
@@ -6249,7 +6246,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[328]"></a>WM_OnKey</STRONG> (Thumb, 48 bytes, Stack size 32 bytes, wm_onkey.o(i.WM_OnKey))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = WM_OnKey &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = WM_OnKey &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
 </UL>
@@ -6261,7 +6258,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3b5]"></a>WM_ReleaseCapture</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, wm_setcapture.o(i.WM_ReleaseCapture))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = WM_ReleaseCapture &rArr; WM__ReleaseCapture &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = WM_ReleaseCapture &rArr; WM__ReleaseCapture &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__ReleaseCapture
 </UL>
@@ -6318,7 +6315,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3a5]"></a>WM_SendMessage</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, wm.o(i.WM_SendMessage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
 </UL>
@@ -6338,17 +6335,18 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[394]"></a>WM_SendToParent</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, wm_sendtoparent.o(i.WM_SendToParent))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 24 + In Cycle
+<LI>Call Chain = WM_SendToParent &rArr;  WM__SendMessage (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
 <LI><a href="#[379]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetParent
 </UL>
-<BR>[Called By]<UL><LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
-<LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DefaultProc
+<BR>[Called By]<UL><LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DefaultProc
+<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 </UL>
 
 <P><STRONG><a name="[3ca]"></a>WM_SetCapture</STRONG> (Thumb, 40 bytes, Stack size 24 bytes, wm_setcapture.o(i.WM_SetCapture))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = WM_SetCapture &rArr; WM__ReleaseCapture &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = WM_SetCapture &rArr; WM__ReleaseCapture &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__ReleaseCapture
 </UL>
@@ -6364,7 +6362,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[37c]"></a>WM_SetFocus</STRONG> (Thumb, 148 bytes, Stack size 48 bytes, wm_setfocus.o(i.WM_SetFocus))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = WM_SetFocus &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = WM_SetFocus &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
 <LI><a href="#[3b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_IsWindow
@@ -6374,7 +6372,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[38a]"></a>WM_SetScrollState</STRONG> (Thumb, 24 bytes, Stack size 24 bytes, wm_setscrollstate.o(i.WM_SetScrollState))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = WM_SetScrollState &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = WM_SetScrollState &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SendMessage
 </UL>
@@ -6382,7 +6380,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3cc]"></a>WM_SetScrollbarH</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, wm_setscrollbar.o(i.WM_SetScrollbarH))
-<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = WM_SetScrollbarH &rArr; WM__SetScrollbarH &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = WM_SetScrollbarH &rArr; WM__SetScrollbarH &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SetScrollbarH
 </UL>
@@ -6390,7 +6388,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3ce]"></a>WM_SetScrollbarV</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, wm_setscrollbar.o(i.WM_SetScrollbarV))
-<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SetScrollbarV
 </UL>
@@ -6726,7 +6724,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b6]"></a>WM__Paint1</STRONG> (Thumb, 136 bytes, Stack size 56 bytes, wm.o(i.WM__Paint1))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = WM__Paint1 &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = WM__Paint1 &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -6781,7 +6779,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3c2]"></a>WM__SendMessage</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, wm__sendmessage.o(i.WM__SendMessage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_h2p
 <LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DefaultProc
@@ -6799,7 +6797,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3b3]"></a>WM__SendMessageIfEnabled</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, wm__sendmessageifenabled.o(i.WM__SendMessageIfEnabled))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = WM__SendMessageIfEnabled &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = WM__SendMessageIfEnabled &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
 <LI><a href="#[3b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__IsEnabled
@@ -6817,7 +6815,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[392]"></a>WM__SendMsgNoData</STRONG> (Thumb, 14 bytes, Stack size 24 bytes, wm.o(i.WM__SendMsgNoData))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
 </UL>
@@ -6827,7 +6825,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3e2]"></a>WM__SendPIDMessage</STRONG> (Thumb, 62 bytes, Stack size 32 bytes, wm_touch.o(i.WM__SendPIDMessage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = WM__SendPIDMessage &rArr; WM__SendMessageIfEnabled &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = WM__SendPIDMessage &rArr; WM__SendMessageIfEnabled &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessageIfEnabled
 <LI><a href="#[3b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_IsWindow
@@ -6837,7 +6835,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3b2]"></a>WM__SendTouchMessage</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, wm_touch.o(i.WM__SendTouchMessage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = WM__SendTouchMessage &rArr; WM__SendPIDMessage &rArr; WM__SendMessageIfEnabled &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = WM__SendTouchMessage &rArr; WM__SendPIDMessage &rArr; WM__SendMessageIfEnabled &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -6847,7 +6845,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3cd]"></a>WM__SetScrollbarH</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, wm_setscrollbar.o(i.WM__SetScrollbarH))
-<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = WM__SetScrollbarH &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = WM__SetScrollbarH &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetScrollbar
 </UL>
@@ -6855,7 +6853,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[3cf]"></a>WM__SetScrollbarV</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, wm_setscrollbar.o(i.WM__SetScrollbarV))
-<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetScrollbar
 </UL>
@@ -7980,32 +7978,32 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> guidrv_lin_16.o(.constdata)
 </UL>
 <P><STRONG><a name="[270]"></a>_OnButtonPressed</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, button.o(i._OnButtonPressed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = _OnButtonPressed &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = _OnButtonPressed &rArr; WIDGET_OrState &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[278]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_OrState
+<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
 </UL>
 
 <P><STRONG><a name="[271]"></a>_OnButtonReleased</STRONG> (Thumb, 58 bytes, Stack size 24 bytes, button.o(i._OnButtonReleased))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = _OnButtonReleased &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = _OnButtonReleased &rArr; WIDGET_AndState &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[279]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[335]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_StoreKey
+<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BUTTON_Callback
 <LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_OnTouchDefault
 </UL>
 
 <P><STRONG><a name="[3]"></a>_OnTouchDefault</STRONG> (Thumb, 64 bytes, Stack size 24 bytes, button.o(i._OnTouchDefault))
-<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = _OnTouchDefault &rArr; _OnButtonReleased &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = _OnTouchDefault &rArr; _OnButtonReleased &rArr; WIDGET_AndState &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -8052,7 +8050,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[292]"></a>_ManageScrollbars</STRONG> (Thumb, 206 bytes, Stack size 80 bytes, graph.o(i._ManageScrollbars))
-<BR><BR>[Stack]<UL><LI>Max Depth = 488<LI>Call Chain = _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 488<LI>Call Chain = _ManageScrollbars &rArr; WM_SetScrollbarV &rArr; WM__SetScrollbarV &rArr; _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -8103,7 +8101,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[297]"></a>_OnScrollValueChanged</STRONG> (Thumb, 56 bytes, Stack size 24 bytes, graph.o(i._OnScrollValueChanged))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = _OnScrollValueChanged &rArr; WM_GetId &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = _OnScrollValueChanged &rArr; WM_GetId &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -8231,7 +8229,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[39c]"></a>_Exec1Input</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, wm.o(i._Exec1Input))
-<BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = _Exec1Input &rArr; WM_DeleteWindow &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = _Exec1Input &rArr; WM_DeleteWindow &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -8379,7 +8377,7 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> wm.o(i.WM__Paint)
 </UL>
 <P><STRONG><a name="[9c]"></a>cbBackWin</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, wm.o(i.cbBackWin))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = cbBackWin &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = cbBackWin &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[252]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SetBkColor
 <LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DefaultProc
@@ -9013,7 +9011,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[372]"></a>_OnTimer</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, scrollbar.o(i._OnTimer))
-<BR><BR>[Stack]<UL><LI>Max Depth = 280<LI>Call Chain = _OnTimer &rArr; SCROLLBAR_AddValue &rArr; SCROLLBAR_SetValue &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = _OnTimer &rArr; SCROLLBAR_AddValue &rArr; SCROLLBAR_SetValue &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
@@ -9025,14 +9023,14 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[36e]"></a>_OnTouch</STRONG> (Thumb, 526 bytes, Stack size 104 bytes, scrollbar.o(i._OnTouch))
-<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = _OnTouch &rArr; SCROLLBAR_SetValue &rArr; WM_NotifyParent &rArr; WM_SendToParent &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = _OnTouch &rArr; WM_SetCapture &rArr; WM__ReleaseCapture &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_LockH
-<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[278]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_OrState
 <LI><a href="#[279]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WIDGET_AndState
 <LI><a href="#[36c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCROLLBAR_SetValue
+<LI><a href="#[371]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_NotifyParent
 <LI><a href="#[3ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetCapture
 <LI><a href="#[38f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_CreateTimer
 <LI><a href="#[3ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__DivideRound32
@@ -9078,7 +9076,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[3e3]"></a>_SetScrollbar</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, wm_setscrollbar.o(i._SetScrollbar))
-<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 408<LI>Call Chain = _SetScrollbar &rArr; SCROLLBAR_CreateAttached &rArr; SCROLLBAR_CreateEx &rArr; SCROLLBAR_CreateUser &rArr; WM_CreateWindowAsChild &rArr; WM__SendMsgNoData &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__DeleteSecure
 <LI><a href="#[389]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
@@ -9090,7 +9088,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[9b]"></a>_cbTimer</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, wm_timer.o(i._cbTimer))
-<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = _cbTimer &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = _cbTimer &rArr; WM_SendMessage &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_h2p
 <LI><a href="#[3a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SendMessage
@@ -9482,7 +9480,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[3c3]"></a>WM__ReleaseCapture</STRONG> (Thumb, 36 bytes, Stack size 32 bytes, wm_setcapture.o(i.WM__ReleaseCapture))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = WM__ReleaseCapture &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr;  WM_SendToParent (Cycle)
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = WM__ReleaseCapture &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
 </UL>

@@ -9,6 +9,17 @@ bool graphicInit(Command command){
 	
 	/*settings depend on command*/
 	switch(command.id){
+		case 4:
+			scaleFactor=0.6;
+			graphOffset=0;
+			break;
+		case 5:
+			scaleFactor=1.5;
+			graphOffset=40;
+			break;
+		case 10:
+			scaleFactor=4.5;
+			graphOffset=0;
 		case 12:
 			scaleFactor=51;
 			graphOffset=0;
@@ -21,9 +32,7 @@ bool graphicInit(Command command){
 			scaleFactor=1.5;
 			graphOffset=40;
 			break;
-		case 10:
-			scaleFactor=4.5;
-			graphOffset=0;
+		
 		
 	}
 	
@@ -37,13 +46,13 @@ bool graphicInit(Command command){
 	GRAPH_SCALE_Handle hScale;
 	
 	/* Create button with GUI_ID_OK ID number */
-  backButton = BUTTON_CreateEx(0, 200, 200, 40, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON0);
+  backButton = BUTTON_CreateEx(0, 210, 200, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON0);
 	BUTTON_SetText(backButton, "BACK");
 	BUTTON_SetFont(backButton, &GUI_Font8x15B_ASCII);
 	GUI_Exec();
 	
 	/* Create graph through all LCD screen */
-	hGraph = GRAPH_CreateEx(0, 0, 320, 200, 0, WM_CF_SHOW, 0, GUI_ID_GRAPH0);
+	hGraph = GRAPH_CreateEx(0, 0, 320, 210, 0, WM_CF_SHOW, 0, GUI_ID_GRAPH0);
 	
 	/* Set grids and border */
 	GRAPH_SetGridVis(hGraph, 1);
@@ -65,6 +74,7 @@ bool graphicInit(Command command){
 	GRAPH_SCALE_SetFactor(hScale, scaleFactor );
 	GRAPH_SCALE_SetTextColor(hScale, GUI_BLUE);
 	GRAPH_SCALE_SetOff(hScale, graphOffset);
+	
 	/* Attach it to graph */
 	GRAPH_AttachScale(hGraph, hScale);
 	
@@ -87,19 +97,21 @@ bool graphicInit(Command command){
 		
 		
 		if(BluetoothGet(bufferRx)){
-			TM_USART_Puts(USART1,bufferRx);
+			//TM_USART_Puts(USART1,bufferRx);
 			command.response=bufferRx;
 			int value = calculateValue(command);
 			
-			intToString(value,valueStr);
-			GUI_ClearRect(200, 200, 320, 240);
+			intToString(value,valueStr);																			
+			GUI_ClearRect(200, 200, 320, 240);																//refreshing screen
 			GUI_DispStringAt(strcat(valueStr, command.units),230,215);        //adding stringvalue and proper unit  strcat(valueStr, command.units)
 			
-			GRAPH_DATA_YT_AddValue(hData,value/scaleFactor+graphOffset);
+			GRAPH_DATA_YT_AddValue(hData,value/scaleFactor+graphOffset);			//adding new sample to curve
 			GUI_Delay(500);
-			//BluetoothSend(command.request);
-			TM_USART_Puts(USART1,command.request);
+			BluetoothSend(command.request);																		//sending another rq
+			//TM_USART_Puts(USART1,command.request);
 		}
+			GUI_Delay(500);
+			//BluetoothSend(command.request); 
 			
 		
 		if (TM_EMWIN_Exec()) {

@@ -23,7 +23,8 @@
 #include "graphic.h"
 
 /*Button handles*/
-BUTTON_Handle rpmButton,speedButton,inAirTempButton, fuelPressureButton;
+BUTTON_Handle rpmButton,speedButton,inAirTempButton, fuelPressureButton, engineLoadButton, engineCollTempButton;
+BUTTON_Handle mafAirFlowRateButton, throttlePosition, controlModuleVoltageButton, engineOilTempButton, fuelTankLvlButton, runTimeButton;
 
 #define ILI9341_PIXEL				76800
 /* Starting buffer address in RAM */
@@ -76,19 +77,44 @@ int main(void) {
 	*/
 	
 	/* Create button with GUI_ID_OK ID number */
-  rpmButton = BUTTON_CreateEx(10, 30, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON1);
-	speedButton= BUTTON_CreateEx(10, 60, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON2);
-	inAirTempButton = BUTTON_CreateEx(10, 90, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON3);
-	fuelPressureButton=BUTTON_CreateEx(10, 120, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON4);
+  rpmButton = BUTTON_CreateEx(5, 30, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON1);
+	speedButton= BUTTON_CreateEx(5, 60, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON2);
+	inAirTempButton = BUTTON_CreateEx(5, 90, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON3);
+	fuelPressureButton=BUTTON_CreateEx(5, 120, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON4);
+	engineLoadButton = BUTTON_CreateEx(5, 150, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON5);
+	engineCollTempButton=BUTTON_CreateEx(5, 180, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON6);
+	mafAirFlowRateButton = BUTTON_CreateEx(165, 30, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON7);
+	throttlePosition= BUTTON_CreateEx(165, 60, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON8);
+	controlModuleVoltageButton = BUTTON_CreateEx(165, 90, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON9);
+	engineOilTempButton=BUTTON_CreateEx(165, 120, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON10);
+	fuelTankLvlButton = BUTTON_CreateEx(165, 150, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON11);
+	runTimeButton=BUTTON_CreateEx(165, 180, 150, 30, 0, WM_CF_SHOW, 0, GUI_ID_BUTTON12);
 	
 	BUTTON_SetText(rpmButton, "RPM");
 	BUTTON_SetText(speedButton, "Speed");
 	BUTTON_SetText(inAirTempButton, "Intake Temperature");
 	BUTTON_SetText(fuelPressureButton, "Fuel Pressure");
+	BUTTON_SetText(engineLoadButton, "Engine Load");
+	BUTTON_SetText(engineCollTempButton, "Engine Coll Temperature");
+	BUTTON_SetText(mafAirFlowRateButton, "Air Flow");
+	BUTTON_SetText(controlModuleVoltageButton, "Voltage");
+	BUTTON_SetText(engineOilTempButton, "Oil Temp");
+	BUTTON_SetText(throttlePosition, "Throttle Pos");
+	BUTTON_SetText(fuelTankLvlButton, "Fuel Lvl");
+	BUTTON_SetText(runTimeButton, "Run Time");
+	
 	BUTTON_SetFont(rpmButton, &GUI_Font8x15B_ASCII);
 	BUTTON_SetFont(speedButton, &GUI_Font8x15B_ASCII);
 	BUTTON_SetFont(inAirTempButton, &GUI_Font8x15B_ASCII);
 	BUTTON_SetFont(fuelPressureButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(engineLoadButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(engineCollTempButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(mafAirFlowRateButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(throttlePosition, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(controlModuleVoltageButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(engineOilTempButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(fuelTankLvlButton, &GUI_Font8x15B_ASCII);
+	BUTTON_SetFont(runTimeButton, &GUI_Font8x15B_ASCII);
 	
 	/*welcome singh8*/
 	GUI_DispStringAt("What parameter do you want to see?",70,3);
@@ -111,6 +137,7 @@ int main(void) {
 													.response = "",
 													.responseType=0,
 													.units = " km/h"};
+	
 	Command rpmCommand = {.id=12,
 												.name = "RPM",
 												.request = "010C\r\n",
@@ -132,6 +159,22 @@ int main(void) {
 															.responseType=0,
 															.units = " kPa"};
 	
+	Command engineLoadCommand= {.id=4,
+															.name = "EngineLoad",
+															.request = "0104\r\n",
+															.response = "",
+															.responseType=0,
+															.units = " %"};
+	
+	Command engCollTempCommand= {.id=5,
+															.name = "EngineCoolantTemp",
+															.request = "0105\r\n",
+															.response = "",
+															.responseType=0,
+															.units = " C"};
+	
+	
+	
 	
 	
 
@@ -141,7 +184,6 @@ int main(void) {
 		/* Check if button was pressed */
 			switch(GUI_GetKey()){
 				case GUI_ID_BUTTON1:
-					//BluetoothSend(speedCommand.request);
 					graphicInit(rpmCommand);	
 					break;
 				case GUI_ID_BUTTON2:
@@ -153,6 +195,13 @@ int main(void) {
 				case GUI_ID_BUTTON4:
 					graphicInit(fuelPressureCommand);
 					break;
+				case GUI_ID_BUTTON5:
+					graphicInit(engineLoadCommand);
+					break;
+				case GUI_ID_BUTTON6:
+					graphicInit(engCollTempCommand);
+					break;
+				
 			}
 			
 			if (TM_EMWIN_Exec()) {

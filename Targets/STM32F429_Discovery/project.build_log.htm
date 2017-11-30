@@ -22,24 +22,26 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 D:\Nowy_folder\AM\Downoady\stm32f429-master\stm32f429-master\50-STM32F429_EMWIN_GRAPH\project.uvprojx
-Project File Date:  11/20/2017
+Project File Date:  11/30/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Nowy folder\Keil\ARM\ARMCC\Bin'
 Build target 'STM32F429I-Discovery'
 assembling startup_stm32f429_439xx.s...
-compiling graphic.c...
+compiling graphic2.c...
 User\bluetooth.h(9): warning:  #1295-D: Deprecated declaration Bluetooth_Init - give arg types
   void Bluetooth_Init();
 User\bluetooth.h(11): warning:  #1-D: last line of file ends without a newline
   bool BluetoothGet(char *buffer);
-User\graphic.c(123): warning:  #940-D: missing return statement at end of non-void function "graphicInit" 
+User\graphic2.h(8): warning:  #1-D: last line of file ends without a newline
+  static void cbForegroundWin(WM_MESSAGE* pMsg);
+User\graphic2.c(64): warning:  #940-D: missing return statement at end of non-void function "graphic2Init" 
   }
-User\graphic.c: 3 warnings, 0 errors
+User\graphic2.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=90492 RO-data=11224 RW-data=996 ZI-data=4732844  
+Program Size: Code=91340 RO-data=16636 RW-data=1000 ZI-data=4732848  
 FromELF: creating hex file...
-".\Targets\STM32F429_Discovery\project.axf" - 0 Error(s), 3 Warning(s).
+".\Targets\STM32F429_Discovery\project.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 

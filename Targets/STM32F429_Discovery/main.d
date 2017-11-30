@@ -41,6 +41,7 @@
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_delay.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\attributes.h
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\targets\stm32f429_discovery\main.o: User\graphic2.h
 .\targets\stm32f429_discovery\main.o: User\graphic.h
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F429_LIBRARIES\tm_stm32f4_dma2d_graphic.h

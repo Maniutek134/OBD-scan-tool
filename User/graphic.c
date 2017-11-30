@@ -10,7 +10,7 @@ bool graphicInit(Command command){
 	/*settings depend on command*/
 	switch(command.id){
 		case 4:
-			scaleFactor=0.6;
+			scaleFactor=0.55;
 			graphOffset=0;
 			break;
 		case 5:
@@ -20,6 +20,7 @@ bool graphicInit(Command command){
 		case 10:
 			scaleFactor=4.5;
 			graphOffset=0;
+			break;
 		case 12:
 			scaleFactor=51;
 			graphOffset=0;
@@ -78,6 +79,8 @@ bool graphicInit(Command command){
 	/* Attach it to graph */
 	GRAPH_AttachScale(hGraph, hScale);
 	
+	/*set font*/
+	GUI_SetFont(&GUI_Font8x16x1x2);
 	
 	/* Change layers for LTDC, show layer 2 on LCD */
 	GUI_SetBkColor(GUI_BLACK);
@@ -89,29 +92,28 @@ bool graphicInit(Command command){
 				GRAPH_Delete(hGraph);
 				BUTTON_Delete(backButton);
 				GUI_ClearRect(0, 0, 320, 240);
-			
+				
 				/*welcome singh8*/
-				GUI_DispStringAt("What parameter do you want to see?",70,3);
+				GUI_SetFont(&GUI_Font8x12_ASCII);
+				GUI_DispStringAt("What parameter do you want to see?",30,5);
 				break;
 		}
 		
 		
 		if(BluetoothGet(bufferRx)){
-			//TM_USART_Puts(USART1,bufferRx);
+	
 			command.response=bufferRx;
 			int value = calculateValue(command);
 			
 			intToString(value,valueStr);																			
 			GUI_ClearRect(200, 200, 320, 240);																//refreshing screen
-			GUI_DispStringAt(strcat(valueStr, command.units),230,215);        //adding stringvalue and proper unit  strcat(valueStr, command.units)
+			GUI_DispStringAt(strcat(valueStr, command.units),230,212);        //adding stringvalue and proper unit  strcat(valueStr, command.units)
 			
 			GRAPH_DATA_YT_AddValue(hData,value/scaleFactor+graphOffset);			//adding new sample to curve
-			GUI_Delay(500);
-			BluetoothSend(command.request);																		//sending another rq
-			//TM_USART_Puts(USART1,command.request);
+
 		}
 			GUI_Delay(500);
-			//BluetoothSend(command.request); 
+			BluetoothSend(command.request); 
 			
 		
 		if (TM_EMWIN_Exec()) {

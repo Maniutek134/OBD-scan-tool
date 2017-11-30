@@ -975,6 +975,16 @@
               <FileType>5</FileType>
               <FilePath>.\User\graphic.h</FilePath>
             </File>
+            <File>
+              <FileName>graphic2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\graphic2.c</FilePath>
+            </File>
+            <File>
+              <FileName>graphic2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\graphic2.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

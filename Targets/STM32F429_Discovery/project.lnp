@@ -58,6 +58,7 @@
 ".\targets\stm32f429_discovery\command.o"
 ".\targets\stm32f429_discovery\calculator.o"
 ".\targets\stm32f429_discovery\graphic.o"
+".\targets\stm32f429_discovery\graphic2.o"
 --library_type=microlib --strict --scatter ".\Targets\STM32F429_Discovery\project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

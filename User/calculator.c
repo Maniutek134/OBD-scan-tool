@@ -29,22 +29,22 @@ int calculateValue(Command command){
 	
 	switch(command.id){
 		case 4:
-			break;
 			sscanf(A, "%x", &a);
-			value=a*100/255;
+			value=(a*100)/255;
 			return value;
+			break;
 		
 		case 5:
 			sscanf(A, "%x", &a);
 			value = a-40;
 			return value;
 			break;
-			break;
 		
 		case 10:
 			sscanf(A, "%x", &a);
 			value=3*a;
 			return value;
+			break;
 		
 		case 12:
 			B=data+2;
@@ -59,10 +59,53 @@ int calculateValue(Command command){
 			return value;
 			break;
 		
-		
 		case 15:
 			sscanf(A, "%x", &a);
 			value = a-40;
+			return value;
+			break;
+		
+		case 16:
+			B=data+2;
+			sscanf(A, "%x", &a);
+			sscanf(B, "%x", &b);
+			value=(256*a+b)/100;
+			return value;
+			break;
+			
+		case 31:
+			B=data+2;
+			sscanf(A, "%x", &a);
+			sscanf(B, "%x", &b);
+			value=(256*a+b)/60;
+			return value;
+			break;
+		
+		case 47:
+			sscanf(A, "%x", &a);
+			value=(a*100)/255;
+			return value;
+			break;
+		
+		case 66:
+			B=data+2;
+			sscanf(A, "%x", &a);
+			sscanf(B, "%x", &b);
+			value=(256*a+b)/1000;
+			return value;
+			break;
+		
+		case 92:
+			sscanf(A, "%x", &a);
+			value=(a*100)/255;
+			return value;
+			break;
+		
+		case 94:
+			B=data+2;
+			sscanf(A, "%x", &a);
+			sscanf(B, "%x", &b);
+			value=(256*a+b)/20;
 			return value;
 			break;
 		

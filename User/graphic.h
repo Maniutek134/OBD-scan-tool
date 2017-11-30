@@ -14,10 +14,13 @@
 #include "tm_stm32f4_i2c.h"
 #include "tm_stm32f4_disco.h"
 
+
 #define GRAPH_Delete(hObj) WM_DeleteWindow(hObj);
 
 extern char bufferRx[100];
 extern char bufferTx[100];
+
+
 
 bool graphicInit(Command command);
 void intToString(int a,char* str);

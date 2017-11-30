@@ -1,5 +1,4 @@
-#include <string.h>
-
+#include <stdbool.h>
 
 
 typedef struct Command{
@@ -10,4 +9,5 @@ typedef struct Command{
 	int responseType;    //0 - one bytes of data, 1- two bytes of data
 	char* units;
 }Command;
+
 

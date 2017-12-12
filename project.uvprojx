@@ -985,6 +985,26 @@
               <FileType>5</FileType>
               <FilePath>.\User\graphic2.h</FilePath>
             </File>
+            <File>
+              <FileName>mainMenu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\mainMenu.c</FilePath>
+            </File>
+            <File>
+              <FileName>mainMenu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\mainMenu.h</FilePath>
+            </File>
+            <File>
+              <FileName>test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\test.c</FilePath>
+            </File>
+            <File>
+              <FileName>test.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\test.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

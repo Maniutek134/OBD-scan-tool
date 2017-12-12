@@ -17,10 +17,6 @@ bool graphicInit(Command command){
 			scaleFactor=1.5;
 			graphOffset=40;
 			break;
-		case 10:
-			scaleFactor=4.5;
-			graphOffset=0;
-			break;
 		case 12:
 			scaleFactor=51;
 			graphOffset=0;
@@ -33,10 +29,23 @@ bool graphicInit(Command command){
 			scaleFactor=1.5;
 			graphOffset=40;
 			break;
+		case 70:
+			scaleFactor=1.5;
+			graphOffset=40;
+			break;
+		case 92:
+			scaleFactor=1.5;
+			graphOffset=40;
+			break;
+		case 94:
+			scaleFactor=14.7;
+			graphOffset=0;
+			break;
 		
 		
 	}
 	
+	//BUTTON_SetDefaultSkinClassic(); // Sets the default skin for new widgets
 	/*back button8 handle*/
 	BUTTON_Handle backButton;
 	
@@ -101,7 +110,8 @@ bool graphicInit(Command command){
 		
 		
 		if(BluetoothGet(bufferRx)){
-	
+			
+			TM_USART_Puts(USART1, bufferRx);
 			command.response=bufferRx;
 			int value = calculateValue(command);
 			

@@ -40,12 +40,6 @@ int calculateValue(Command command){
 			return value;
 			break;
 		
-		case 10:
-			sscanf(A, "%x", &a);
-			value=3*a;
-			return value;
-			break;
-		
 		case 12:
 			B=data+2;
 			sscanf(A, "%x", &a);
@@ -65,13 +59,6 @@ int calculateValue(Command command){
 			return value;
 			break;
 		
-		case 16:
-			B=data+2;
-			sscanf(A, "%x", &a);
-			sscanf(B, "%x", &b);
-			value=(256*a+b)/100;
-			return value;
-			break;
 			
 		case 31:
 			B=data+2;
@@ -92,6 +79,18 @@ int calculateValue(Command command){
 			sscanf(A, "%x", &a);
 			sscanf(B, "%x", &b);
 			value=(256*a+b)/1000;
+			return value;
+			break;
+		
+		case 70:
+			sscanf(A, "%x", &a);
+			value = a-40;
+			return value;
+			break;
+
+		case 82:
+			sscanf(A, "%x", &a);
+			value=(a*100)/255;
 			return value;
 			break;
 		

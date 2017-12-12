@@ -7,8 +7,6 @@ char *commandName;
 bool graphic2Init(Command command){
 
 	
-			
-	
 	/*back button8 handle*/
 	BUTTON_Handle backButton;
 	/*window handle*/
@@ -42,7 +40,7 @@ bool graphic2Init(Command command){
 		
 		
 		if(BluetoothGet(bufferRx)){
-			//TM_USART_Puts(USART1,bufferRx);
+			TM_USART_Puts(USART1,bufferRx);
 			command.response=bufferRx;
 			int value = calculateValue(command);
 			

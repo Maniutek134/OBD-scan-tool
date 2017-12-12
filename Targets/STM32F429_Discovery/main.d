@@ -1,4 +1,5 @@
 .\targets\stm32f429_discovery\main.o: User\main.c
+.\targets\stm32f429_discovery\main.o: User\mainMenu.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F4xx_STANDARD_PERIPHERAL_DRIVERS\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\targets\stm32f429_discovery\main.o: ..\00-STM32F4xx_STANDARD_PERIPHERAL_DRIVERS\CMSIS\Include\core_cm4.h
 .\targets\stm32f429_discovery\main.o: D:\Nowy folder\Keil\ARM\ARMCC\Bin\..\include\stdint.h

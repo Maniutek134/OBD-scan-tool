@@ -20,8 +20,6 @@
 extern char bufferRx[100];
 extern char bufferTx[100];
 
-
-
 bool graphicInit(Command command);
 void intToString(int a,char* str);
 
